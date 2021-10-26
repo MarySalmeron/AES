@@ -34,12 +34,32 @@ public class AES {
         }
     }
 
-    public void encryptAES(){
-
+    public void encryptAES(String keyName, String fileName, int mode){
+        System.out.println("keyName = " + keyName);
+        System.out.println("fileName = " + fileName);
+        System.out.println("mode = " + mode);
     }
 
     public static void main(String[] args) {
         AES aes = new AES();
-        aes.generateKey(128);
+        //aes.generateKey(128);
+
+        System.out.println("1. Generate Key\n2. Encrypt/Decrypt with AES");
+        Scanner reader = new Scanner(System.in);
+        int choice = reader.nextInt();
+        reader.nextLine();
+
+        if(choice==1) {
+            System.out.print("Key size (128, 192 or 256): ");   //¿así o con un menú?
+            aes.generateKey(reader.nextInt());
+        }
+        else  {
+            System.out.print("Key file: ");
+            String keyFile = reader.nextLine();
+            System.out.print("File to encrypt/decrypt (include extension): ");
+            String file = reader.nextLine();
+            System.out.println("(1) Encrypt\n(2) Decrypt");   //ENCRYPT_MODE=1, DECRYPT_MODE=2
+            aes.encryptAES(keyFile,file, reader.nextInt());
+        }
     }
 }
