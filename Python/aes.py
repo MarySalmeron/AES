@@ -87,8 +87,11 @@ if option == '1':
     plaintext=readMessage(plaintext_File)
 
     key_128 = b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f'
-    key_192= b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17'
+    key_192 = b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17'
     key_256 = b'\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f'
+    #key_128 = keyGenerator(16)
+    #key_192 = keyGenerator(24)
+    #key_256 = keyGenerator(32)
     #print(f"Bytes del 128: {len(key_128)}")
     #print(f"Bytes del 192: {len(key_192)}")
     #print(f"Bytes del 256: {len(key_256)}")
@@ -108,6 +111,7 @@ if option == '1':
     print(f"Texto cifrado: {str(ciphered_data_CBC)}")
     saveText("encryptedCBC.txt", cipher_CBC.iv, ciphered_data_CBC)
     saveKey("CBCKey.txt",key_128)
+    print(f"CBC_iv={cipher_CBC.iv}\n")
     #CTR
     ciphered_data_CTR = cipher_CTR.encrypt(plaintext)
     saveText("encryptedCTR.txt",nonce, ciphered_data_CTR)#CTR dont have iv :cipher_CTR.iv
