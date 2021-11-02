@@ -73,7 +73,7 @@ public class AES {
         }
     }
 
-    public IvParameterSpec generateIv() {    //no sé... tengo duda con este
+    public IvParameterSpec generateIv() {    
         byte[] iv = new byte[16];
         new SecureRandom().nextBytes(iv);
         return new IvParameterSpec(iv);
